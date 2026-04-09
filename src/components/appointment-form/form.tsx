@@ -44,7 +44,7 @@ import {
   SelectValue,
 } from "../ui/select"
 import { toast } from "sonner"
-import { createAppointment } from "@/app/actions"
+import { createAppointment, updateAppointment } from "@/app/actions"
 import { useEffect, useState } from "react"
 import { Appointment } from "@/types/appointment"
 
@@ -105,18 +105,27 @@ export const AppointmentForm = ({
     const scheduleAt = new Date(data.scheduleAt)
     scheduleAt.setHours(Number(hour), Number(min), 0, 0)
 
+    const isEdit = !!appointment?.id
+
     // invoca nossa SERVER ACTION
-    const res = await createAppointment({
-      ...data,
-      scheduleAt,
-    })
+    const res = isEdit
+      ? await updateAppointment(appointment.id, {
+          ...data,
+          scheduleAt,
+        })
+      : await createAppointment({
+          ...data,
+          scheduleAt,
+        })
 
     if (res?.error) {
       toast.error(res.error)
       return
     }
 
-    toast.success(`Agendamento criado com sucesso!`)
+    toast.success(
+      `Agendamento ${isEdit ? "atualizado" : "criado"} com sucesso!`
+    )
 
     setIsOpen(false)
     form.reset()
