@@ -45,7 +45,8 @@ import {
 } from "../ui/select"
 import { toast } from "sonner"
 import { createAppointment } from "@/app/actions"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { Appointment } from "@/types/appointment"
 
 const appointmentFormSchema = z
   .object({
@@ -75,7 +76,15 @@ const appointmentFormSchema = z
 
 type AppointmentFormValues = z.infer<typeof appointmentFormSchema>
 
-export const AppointmentForm = () => {
+type AppointmentFormProps = {
+  appointment?: Appointment
+  children?: React.ReactNode
+}
+
+export const AppointmentForm = ({
+  appointment,
+  children,
+}: AppointmentFormProps) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const form = useForm<AppointmentFormValues>({
@@ -113,12 +122,14 @@ export const AppointmentForm = () => {
     form.reset()
   }
 
+  useEffect(() => {
+    form.reset(appointment)
+  }, [appointment, form])
+
   return (
     <>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogTrigger asChild>
-          <Button variant="brand">Novo Agendamento</Button>
-        </DialogTrigger>
+        {children && <DialogTrigger asChild>{children}</DialogTrigger>}
 
         <DialogContent
           variant="appointment"
