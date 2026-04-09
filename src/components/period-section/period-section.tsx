@@ -1,16 +1,16 @@
-import { AppointmentPeriod } from '@/types/appointment';
-import { Cloudy, Moon, Sun } from 'lucide-react';
-import { AppointmentCard } from '../appointment-card/appointment-card';
+import { AppointmentPeriod } from "@/types/appointment"
+import { Cloudy, Moon, Sun } from "lucide-react"
+import { AppointmentCard } from "../appointment-card/appointment-card"
 
 type PeriodSectionProps = {
-  period: AppointmentPeriod;
-};
+  period: AppointmentPeriod
+}
 
 const periodIcons = {
   morning: <Sun className="text-accent-blue" />,
   afternoon: <Cloudy className="text-accent-orange" />,
   evening: <Moon className="text-accent-yellow" />,
-};
+}
 
 export const PeriodSection = ({ period }: PeriodSectionProps) => {
   return (
@@ -31,13 +31,17 @@ export const PeriodSection = ({ period }: PeriodSectionProps) => {
         <div className="px-5">
           <div>
             {period.appointments.map((appointment, index) => (
-              <AppointmentCard key={index} appointment={appointment} isFirst={index === 0} />
+              <AppointmentCard
+                key={index}
+                appointment={appointment}
+                isFirst={index === 0}
+              />
             ))}
           </div>
         </div>
       ) : (
-        <p className='px-5 py-2'>Nenhum agendamento para este período</p>
+        <p className="px-5 py-3 text-paragraph-small-size ">Nenhum agendamento para este período</p>
       )}
     </section>
-  );
-};
+  )
+}
