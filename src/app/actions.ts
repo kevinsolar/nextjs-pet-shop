@@ -95,3 +95,18 @@ export async function updateAppointment(id: string, data: AppointmentData) {
     console.log(error)
   }
 }
+
+export async function deleteAppointment(id: string) {
+  try {
+    await prisma.appointment.delete({
+      where: { id },
+    })
+    revalidatePath("/")
+  } catch (error) {
+    console.log(error)
+
+    return {
+      error: "Erro ao remover agendamento. Tente novamente.",
+    }
+  }
+}
