@@ -1,6 +1,8 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @theme {
+  --breakpoint-qhd: 1440px;
+
   /* Content Colors */
   --color-content-primary: #ffffff;
   --color-content-secondary: #98959d;
@@ -31,8 +33,8 @@
   --color-accent-orange-light: #75501b;
 
   /* Typography */
-  --font-family-title: 'Inter Tight', sans-serif;
-  --font-family-body: 'Inter', sans-serif;
+  --font-family-title: "Inter Tight", sans-serif;
+  --font-family-body: "Inter", sans-serif;
 
   /* Title Typography */
   --text-title-size: 24px;
@@ -238,21 +240,21 @@
 }
 
 /* Toast Error Styles */
-[data-sonner-toast][data-type='error'] {
+[data-sonner-toast][data-type="error"] {
   background-color: #dc2626 !important;
   border-color: #b91c1c !important;
   color: #ffffff !important;
 }
 
-[data-sonner-toast][data-type='error'] [data-title] {
+[data-sonner-toast][data-type="error"] [data-title] {
   color: #ffffff !important;
   font-weight: 700 !important;
 }
 
-[data-sonner-toast][data-type='error'] [data-description] {
+[data-sonner-toast][data-type="error"] [data-description] {
   color: #ffffff !important;
 }
 
-[data-sonner-toast][data-type='error'] [data-icon] {
+[data-sonner-toast][data-type="error"] [data-icon] {
   color: #ffffff !important;
 }

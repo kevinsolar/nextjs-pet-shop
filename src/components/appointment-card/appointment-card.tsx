@@ -70,50 +70,50 @@ export const AppointmentCard = ({
             {appointment.tutorName}
           </span>
         </div>
+      </div>
 
-        <div className="text-left pr-4 hidden md:block mt-1 md:mt-0 col-span-2 md:col-span-1">
-          <span className="text-paragraph-small-size text-content-secondary">
-            {appointment.description}
-          </span>
-        </div>
+      <div className="text-left pr-4 mt-2 md:mt-0">
+        <span className="text-paragraph-small-size text-content-secondary">
+          {appointment.description}
+        </span>
+      </div>
 
-        <div className="text-right mt-2 md:mt-0 col-span-2 md:col-span-1 flex justify-end items-center gap-2">
-          <AppointmentForm appointment={appointment}>
-            <Button variant="edit" size="icon">
-              <PenBox size={16} />
+      <div className="text-right mt-2 md:mt-0 flex justify-end items-center gap-2">
+        <AppointmentForm appointment={appointment}>
+          <Button variant="edit" size="icon">
+            <PenBox size={16} />
+          </Button>
+        </AppointmentForm>
+
+        <AlertDialog>
+          <AlertDialogTrigger asChild>
+            <Button variant="remove" size="icon">
+              <Trash2 size={16} />
             </Button>
-          </AppointmentForm>
+          </AlertDialogTrigger>
 
-          <AlertDialog>
-            <AlertDialogTrigger asChild>
-              <Button variant="remove" size="icon">
-                <Trash2 size={16} />
-              </Button>
-            </AlertDialogTrigger>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Remover agendamento</AlertDialogTitle>
 
-            <AlertDialogContent>
-              <AlertDialogHeader>
-                <AlertDialogTitle>Remover agendamento</AlertDialogTitle>
+              <AlertDialogDescription>
+                Tem certeza que deseja remover esse agendamento? Esta ação não
+                pode ser desfeita.
+              </AlertDialogDescription>
+            </AlertDialogHeader>
 
-                <AlertDialogDescription>
-                  Tem certeza que deseja remover esse agendamento? Esta ação não
-                  pode ser desfeita.
-                </AlertDialogDescription>
-              </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Cancelar</AlertDialogCancel>
 
-              <AlertDialogFooter>
-                <AlertDialogCancel>Cancelar</AlertDialogCancel>
-
-                <AlertDialogAction onClick={handleDelete} disabled={isDeleting}>
-                  {isDeleting && (
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  )}
-                  Confirmar remoção
-                </AlertDialogAction>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialog>
-        </div>
+              <AlertDialogAction onClick={handleDelete} disabled={isDeleting}>
+                {isDeleting && (
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                )}
+                Confirmar remoção
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
       </div>
     </div>
   )
