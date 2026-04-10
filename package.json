@@ -8,7 +8,10 @@
     "start": "next start",
     "lint": "eslint",
     "format": "prettier --write .",
-    "validate:typecheck": "tsc --noEmit --skipLibCheck"
+    "validate:typecheck": "tsc --noEmit --skipLibCheck",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate deploy",
+    "db:dev": "prisma migrate dev"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

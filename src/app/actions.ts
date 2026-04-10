@@ -47,7 +47,7 @@ export async function createAppointment(data: AppointmentData) {
 
     revalidatePath("/")
   } catch (error) {
-    console.log(error)
+    console.log("Ao criar", error)
   }
 }
 

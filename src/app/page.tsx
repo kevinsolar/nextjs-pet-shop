@@ -4,7 +4,7 @@ import { PeriodSection } from "@/components/period-section/period-section"
 import { Button } from "@/components/ui/button"
 import { prisma } from "@/lib/prisma"
 import { groupAppointmentByPeriod } from "@/utils"
-import { parseISO, startOfDay } from "date-fns"
+import { endOfDay, parseISO, startOfDay } from "date-fns"
 
 export default async function Home({
   searchParams,
@@ -18,7 +18,7 @@ export default async function Home({
     where: {
       scheduleAt: {
         gte: startOfDay(selectedDate), // comeco do range
-        lte: startOfDay(selectedDate), // final do range
+        lte: endOfDay(selectedDate), // final do range
       },
     },
     orderBy: {
