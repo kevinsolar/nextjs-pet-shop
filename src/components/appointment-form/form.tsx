@@ -102,8 +102,10 @@ export const AppointmentForm = ({
   const onSubmit = async (data: AppointmentFormValues) => {
     const [hour, min] = data.time.split(":")
 
-    const scheduleAt = new Date(data.scheduleAt)
-    scheduleAt.setHours(Number(hour), Number(min), 0, 0)
+    const scheduleAt = setMinutes(
+      setHours(data.scheduleAt, Number(hour)),
+      Number(min)
+    )
 
     const isEdit = !!appointment?.id
 
