@@ -48,7 +48,7 @@ export function groupAppointmentByPeriod(
       appointments: afternoonAppointments,
     },
     {
-      title: "Manhã",
+      title: "Noite",
       type: "evening",
       timeRange: "19h-21h",
       appointments: eveningAppointments,
